@@ -12,3 +12,8 @@ If the program fais, probably you need to download the dataset first. You can do
 ```
 wget https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
 ```
+
+## Dependencies
+- python >= 3.9
+- [JAX](https://github.com/google/jax)
+
