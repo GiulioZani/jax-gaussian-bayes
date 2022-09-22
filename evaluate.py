@@ -1,16 +1,12 @@
 import jax.numpy as np
 from abc import ABC
-from jaxtyping import Array, Float
 import pickle
-import ipdb
-from numpy import random
 import os
 
 from model import Model
 from random_model import RandomModel
 from gaussian_naive_bayes import GaussianNaiveBayes
 from multivariate_gaussian_bayes import MultivariateGaussianBayes
-import jax
 
 
 def accuracy(test_x, test_y, model: Model) -> float:
@@ -63,12 +59,10 @@ def main():
     train_x = train_x.reshape((len(train_x), 3, 32, 32))
     test_x = test_x.reshape((len(test_x), 3, 32, 32))
     # datadict = unpickle('/home/kamarain/Data/cifar-10-batches-py/test_batch')
-    key = jax.random.PRNGKey(123)
-    labeldict = unpickle("cifar-10-batches-py/batches.meta")
-    # random_model = RandomModel(train_x, train_y)
-    # print(f"{accuracy(test_x, test_y, random_model)=}")
-    # gaussian_naive_bayes_classifier = GaussianNaiveBayes(train_x, train_y)
-    # print(f"{accuracy(test_x, test_y, gaussian_naive_bayes_classifier)=}")
+    random_model = RandomModel(train_x, train_y)
+    print(f"{accuracy(test_x, test_y, random_model)=}")
+    gaussian_naive_bayes_classifier = GaussianNaiveBayes(train_x, train_y)
+    print(f"{accuracy(test_x, test_y, gaussian_naive_bayes_classifier)=}")
     multivariate_gaussian_bayes_classifier = MultivariateGaussianBayes(
         train_x, train_y, downsample_size=2
     )

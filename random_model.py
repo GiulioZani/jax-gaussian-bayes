@@ -1,5 +1,4 @@
 from model import Model
-from jax import numpy as np
 import jax
 
 
